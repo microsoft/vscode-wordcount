@@ -1,0 +1,19 @@
+{
+	"name": "Markdown-Tools",
+	"version": "0.0.1",
+	"publisher": "SeanMcBreen",
+	"activationEvents": [
+		"onLanguage:markdown"
+	],
+	"engines": {
+		"vscode": "*"
+	},
+	"main": "./out/extension",
+	"scripts": {
+		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
+	},
+	"devDependencies": {
+		"vscode": "*"
+	}
+}
