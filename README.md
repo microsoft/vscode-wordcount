@@ -1,5 +1,5 @@
 # README
-## This the readme for your extension "Markdown-Tools" 
+## This the readme for your extension "Wordcount" 
 -------------------
 To author your README use Visual Studio Code:
 
