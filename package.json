@@ -1,7 +1,8 @@
 {
 	"name": "wordcount",
 	"version": "0.0.1",
-	"publisher": "SeanMcBreen",
+	"publisher": "seanmcbreen",
+	"description": "Markdown Word Count Example",
 	"activationEvents": [
 		"onLanguage:markdown"
 	],
