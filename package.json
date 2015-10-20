@@ -1,6 +1,6 @@
 {
 	"name": "wordcount",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"publisher": "seanmcbreen",
 	"description": "Markdown Word Count Example",
 	"activationEvents": [
