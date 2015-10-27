@@ -48,7 +48,10 @@ class WordCounter {
             // Parse out unwanted whitespace so the split is accurate
             docContent = docContent.replace(/(< ([^>]+)<)/g, '').replace(/\s+/g, ' ');
             docContent = docContent.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-            let wordCount = docContent.split(" ").length;
+            let wordCount = 0;
+            if (docContent != "") {
+                wordCount = docContent.split(" ").length;
+            }
 
             // Update the status bar
             this._statusBarMessage = window.setStatusBarMessage(wordCount !== 1 ? `${wordCount} Words` : '1 Word');
