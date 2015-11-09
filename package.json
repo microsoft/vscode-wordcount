@@ -1,13 +1,20 @@
 {
 	"name": "wordcount",
-	"version": "0.0.3",
+	"version": "0.1.0",
 	"publisher": "seanmcbreen",
 	"description": "Markdown Word Count Example",
+	"author": {
+		"name": "Microsoft Corporation - Development Labs"
+	},
 	"activationEvents": [
 		"onLanguage:markdown"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Microsoft/vscode-wordcount.git"
+	},
 	"engines": {
-		"vscode": "*"
+		"vscode": "0.10.x"
 	},
 	"main": "./out/extension",
 	"scripts": {
@@ -15,6 +22,6 @@
 		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
 	},
 	"devDependencies": {
-		"vscode": "*"
+		"vscode": "^0.10.0"
 	}
 }

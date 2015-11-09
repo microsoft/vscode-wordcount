@@ -1,10 +1,10 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import {window, workspace, commands, Disposable} from 'vscode';
+import {window, workspace, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem} from 'vscode';
 
 // this method is called when your extension is activated. activation is
 // controlled by the activation events defined in package.json
-export function activate(disposables: Disposable[]) {
+export function activate(ctx: ExtensionContext) {
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
@@ -16,33 +16,36 @@ export function activate(disposables: Disposable[]) {
 
     // add to a list of disposables which are disposed when this extension
     // is deactivated again.
-    disposables.push(controller);
-    disposables.push(wordCounter);
+    ctx.subscriptions.push(controller);
+    ctx.subscriptions.push(wordCounter);
 }
 
 class WordCounter {
 
-    private _statusBarMessage: Disposable;
+    private _statusBarItem: StatusBarItem;
 
     dispose() {
         this.hideWordCount();
     }
 
-    public showWordCount() {
-
-        // Remove previous status bar message
-        this.hideWordCount();
+    public updateWordCount() {
+        
+        // Create as needed
+        if (!this._statusBarItem) {
+            this._statusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
+        } 
 
         // Get the current text editor
-        let editor = window.getActiveTextEditor();
+        let editor = window.activeTextEditor;
         if (!editor) {
+            this._statusBarItem.hide();
             return;
         }
 
-        let doc = editor.getTextDocument();
+        let doc = editor.document;
 
         // Only update status if an MD file
-        if (doc.getLanguageId() === "markdown") {
+        if (doc.languageId === "markdown") {
             let docContent = doc.getText();
 
             // Parse out unwanted whitespace so the split is accurate
@@ -54,13 +57,16 @@ class WordCounter {
             }
 
             // Update the status bar
-            this._statusBarMessage = window.setStatusBarMessage(wordCount !== 1 ? `${wordCount} Words` : '1 Word');
+            this._statusBarItem.text = wordCount !== 1 ? `$(pencil) ${wordCount} Words` : '$(pencil) 1 Word';
+            this._statusBarItem.show();
+        } else {
+            this._statusBarItem.hide();
         }
     }
 
     public hideWordCount() {
-        if (this._statusBarMessage) {
-            this._statusBarMessage.dispose();
+        if (this._statusBarItem) {
+            this._statusBarItem.dispose();
         }
     }
 }
@@ -72,7 +78,7 @@ class WordCounterController {
 
     constructor(wordCounter: WordCounter) {
         this._wordCounter = wordCounter;
-        this._wordCounter.showWordCount();
+        this._wordCounter.updateWordCount();
 
         // subscribe to selection change and editor activation events
         let subscriptions: Disposable[] = [];
@@ -80,7 +86,7 @@ class WordCounterController {
         window.onDidChangeActiveTextEditor(this._onEvent, this, subscriptions);
 
         // create a combined disposable from both event subscriptions
-        this._disposable = Disposable.of(...subscriptions);
+        this._disposable = Disposable.from(...subscriptions);
     }
 
     dispose() {
@@ -88,6 +94,6 @@ class WordCounterController {
     }
 
     private _onEvent() {
-        this._wordCounter.showWordCount();
+        this._wordCounter.updateWordCount();
     }
 }
