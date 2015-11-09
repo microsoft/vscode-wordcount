@@ -22,6 +22,6 @@
 		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
 	},
 	"devDependencies": {
-		"vscode": "^0.10.0"
+		"vscode": "0.10.x"
 	}
 }
