@@ -1,6 +1,6 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import {window, workspace, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem} from 'vscode';
+import {window, workspace, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument} from 'vscode';
 
 // this method is called when your extension is activated. activation is
 // controlled by the activation events defined in package.json
@@ -20,7 +20,7 @@ export function activate(ctx: ExtensionContext) {
     ctx.subscriptions.push(wordCounter);
 }
 
-class WordCounter {
+export class WordCounter {
 
     private _statusBarItem: StatusBarItem;
 
@@ -46,15 +46,7 @@ class WordCounter {
 
         // Only update status if an MD file
         if (doc.languageId === "markdown") {
-            let docContent = doc.getText();
-
-            // Parse out unwanted whitespace so the split is accurate
-            docContent = docContent.replace(/(< ([^>]+)<)/g, '').replace(/\s+/g, ' ');
-            docContent = docContent.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-            let wordCount = 0;
-            if (docContent != "") {
-                wordCount = docContent.split(" ").length;
-            }
+            let wordCount = this._getWordCount(doc);
 
             // Update the status bar
             this._statusBarItem.text = wordCount !== 1 ? `$(pencil) ${wordCount} Words` : '$(pencil) 1 Word';
@@ -62,6 +54,20 @@ class WordCounter {
         } else {
             this._statusBarItem.hide();
         }
+    }
+    
+    public _getWordCount(doc:TextDocument): number {
+        let docContent = doc.getText();
+
+        // Parse out unwanted whitespace so the split is accurate
+        docContent = docContent.replace(/(< ([^>]+)<)/g, '').replace(/\s+/g, ' ');
+        docContent = docContent.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+        let wordCount = 0;
+        if (docContent != "") {
+            wordCount = docContent.split(" ").length;
+        }
+        
+        return wordCount;
     }
 
     public hideWordCount() {
