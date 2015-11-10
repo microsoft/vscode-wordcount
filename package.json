@@ -2,9 +2,18 @@
 	"name": "wordcount",
 	"version": "0.1.0",
 	"publisher": "seanmcbreen",
-	"description": "Markdown Word Count Example",
+	"description": "Markdown Word Count Example - a status bar contribution that updated for the number of workds in a Markdown document.",
 	"author": {
-		"name": "Microsoft Corporation - Development Labs"
+		"name": "seanmcbreen"
+	},
+	"categories": [
+		"Other"
+	],
+	"license": "SEE LICENSE IN LICENSE.md",
+	"icon": "images/icon.svg",
+	"galleryBanner": {
+		"color": "#C80000",
+		"theme": "dark"
 	},
 	"activationEvents": [
 		"onLanguage:markdown"

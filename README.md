@@ -1,14 +1,15 @@
-# README
-## This the readme for your extension "Wordcount" 
--------------------
-To author your README use Visual Studio Code:
+# VSCode - WordCount README
+ 
+This is a simple extension that illustrates a number of concepts when it comes to writing extensions for VS Code.  
 
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
+* Activation on a file type open
+* Contributing to the status bar
+* Subscribing to update events
+* Adding a test to your extension
+* Marking up the `package.json` so the gallery looks good
 
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](http://daringfireball.net)
+## Functionality
 
-** Enjoy!**
+It's pretty simple open up a `Markdown` file and the status bar will have an auto-updating wordcount in it...
+
+![Word Count in status bar](images/wordcount.gif)
