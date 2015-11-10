@@ -1,8 +1,9 @@
 {
 	"name": "wordcount",
-	"version": "0.1.0",
+	"displayName": "Word Count",
+	"version": "0.1.1",
 	"publisher": "seanmcbreen",
-	"description": "Markdown Word Count Example - a status bar contribution that updated for the number of workds in a Markdown document.",
+	"description": "Markdown Word Count Example - a status bar contribution that reports out the number of works in a Markdown document as you interact with it.",
 	"author": {
 		"name": "seanmcbreen"
 	},
