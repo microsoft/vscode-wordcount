@@ -24,10 +24,6 @@ export class WordCounter {
 
     private _statusBarItem: StatusBarItem;
 
-    dispose() {
-        this.hideWordCount();
-    }
-
     public updateWordCount() {
         
         // Create as needed
@@ -55,8 +51,8 @@ export class WordCounter {
             this._statusBarItem.hide();
         }
     }
-    
-    public _getWordCount(doc:TextDocument): number {
+
+    public _getWordCount(doc: TextDocument): number {
         let docContent = doc.getText();
 
         // Parse out unwanted whitespace so the split is accurate
@@ -66,14 +62,12 @@ export class WordCounter {
         if (docContent != "") {
             wordCount = docContent.split(" ").length;
         }
-        
+
         return wordCount;
     }
 
-    public hideWordCount() {
-        if (this._statusBarItem) {
-            this._statusBarItem.dispose();
-        }
+    public dispose() {
+        this._statusBarItem.dispose();
     }
 }
 
@@ -95,11 +89,11 @@ class WordCounterController {
         this._disposable = Disposable.from(...subscriptions);
     }
 
-    dispose() {
-        this._disposable.dispose();
-    }
-
     private _onEvent() {
         this._wordCounter.updateWordCount();
+    }
+
+    public dispose() {
+        this._disposable.dispose();
     }
 }
