@@ -1,8 +1,8 @@
 {
 	"name": "wordcount",
 	"displayName": "Word Count",
-	"version": "0.1.2",
-	"publisher": "seanmcbreen",
+	"version": "0.1.0",
+	"publisher": "ms-vscode",
 	"description": "Markdown Word Count Example - a status bar contribution that reports out the number of works in a Markdown document as you interact with it.",
 	"author": {
 		"name": "seanmcbreen"
@@ -10,7 +10,7 @@
 	"categories": [
 		"Other"
 	],
-	"license": "SEE LICENSE IN LICENSE.md",
+	"license": "SEE LICENSE IN LICENSE.txt",
 	"icon": "images/icon.svg",
 	"galleryBanner": {
 		"color": "#C80000",
