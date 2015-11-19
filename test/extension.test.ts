@@ -19,7 +19,7 @@ suite("Word Count Tests", () => {
 	test("Word Count", (done) => {
 		let testWordCounter = new myExtension.WordCounter();
 
-		vscode.workspace.openTextDocument(path.join(__dirname, '..', '..', 'vsc-extension-quickstart2.md')).then((document) => {
+		vscode.workspace.openTextDocument(path.join(__dirname, '..', '..', 'vsc-extension-quickstart.md')).then((document) => {
 			assert.equal(testWordCounter._getWordCount(document), 254);
 			done();
 		}, (error) => {
