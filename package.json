@@ -1,37 +1,38 @@
 {
-	"name": "wordcount",
-	"displayName": "Word Count",
-	"version": "0.1.0",
-	"publisher": "ms-vscode",
-	"description": "Markdown Word Count Example - a status bar contribution that reports out the number of works in a Markdown document as you interact with it.",
-	"author": {
-		"name": "seanmcbreen"
-	},
-	"categories": [
-		"Other"
-	],
-	"license": "SEE LICENSE IN LICENSE.txt",
-	"icon": "images/icon.svg",
-	"galleryBanner": {
-		"color": "#C80000",
-		"theme": "dark"
-	},
-	"activationEvents": [
-		"onLanguage:markdown"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Microsoft/vscode-wordcount.git"
-	},
-	"engines": {
-		"vscode": "0.10.x"
-	},
-	"main": "./out/extension",
-	"scripts": {
-		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
-		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
-	},
-	"devDependencies": {
-		"vscode": "0.10.x"
-	}
+  "name": "wordcount",
+  "displayName": "Word Count",
+  "version": "0.1.0",
+  "publisher": "ms-vscode",
+  "description": "Markdown Word Count Example - a status bar contribution that reports out the number of works in a Markdown document as you interact with it.",
+  "author": {
+    "name": "seanmcbreen"
+  },
+  "categories": [
+    "Other"
+  ],
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "icon": "images/icon.svg",
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/vscode-wordcount.git"
+  },
+  "engines": {
+    "vscode": "0.10.x"
+  },
+  "main": "./out/extension",
+  "scripts": {
+    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
+  },
+  "devDependencies": {
+    "typescript": "^1.6.2",
+    "vscode": "0.10.x"
+  }
 }
