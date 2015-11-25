@@ -6,6 +6,7 @@
 * extension.ts - this is the main file where you will provide the implementation of your command. The file exports one function, activate, which is called the very first time your extension is activated (in this case by executing the command). Inside the activate function we call registerCommand. We pass the function containing the implementation of the command as the second parameter to registerCommand
 
 ## Get up and running straight away 
+* execute `npm install` in a command line to restore the addon dependencies
 * press F5 to open a new window with your extension loaded
 * run your command from the command palette by pressing F1 and typing 'Hello World'
 * set breakpoints in your code inside extension.ts to debug your extension
