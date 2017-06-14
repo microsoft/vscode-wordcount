@@ -11,7 +11,7 @@
 		"Other"
 	],
 	"license": "SEE LICENSE IN LICENSE.txt",
-	"icon": "images/icon.svg",
+	"icon": "images/icon.png",
 	"galleryBanner": {
 		"color": "#C80000",
 		"theme": "dark"
