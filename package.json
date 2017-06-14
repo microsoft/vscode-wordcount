@@ -3,7 +3,7 @@
 	"displayName": "Word Count",
 	"version": "0.1.0",
 	"publisher": "ms-vscode",
-	"description": "Markdown Word Count Example - a status bar contribution that reports out the number of works in a Markdown document as you interact with it.",
+	"description": "Markdown Word Count Example - a status bar contribution that reports out the number of words in a Markdown document as you interact with it.",
 	"author": {
 		"name": "seanmcbreen"
 	},
