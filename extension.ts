@@ -59,6 +59,7 @@ export class WordCounter {
         docContent = docContent.normalize('NFD').replace(/[\u0300-\u036F]/g, ''); // remove diacritics
         docContent = docContent.replace(/(<([^>]+)>)/g, ''); // remove HTML tags
         docContent = docContent.replace(/\W+/g, ' ').trim(); // separate words with a single space
+        
         let wordCount = 0;
         if (docContent != "") {
             wordCount = docContent.split(" ").length;
