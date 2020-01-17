@@ -53,16 +53,18 @@ export class WordCounter {
     }
 
     public _getWordCount(doc: TextDocument): number {
-        let docContent = doc.getText();
-
-        // Parse out unwanted whitespace so the split is accurate
-        docContent = docContent.replace(/(< ([^>]+)<)/g, '').replace(/\s+/g, ' ');
-        docContent = docContent.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+        // Convert unwanted characters and tags to whitespaces, and then replace multi-whitespaces with single spaces
+        let docContent = doc.getText()
+            .split('\n').map((line)=>line.trim()).join(' ') // put all on one line
+            .replace(/<[^>]*>?/gm, ' ') // get rid of tags
+            .replace(/\[x\]/g, ' ') //get rid of [x] checkboxes
+            .replace(/[0-9]/g, ' ') // get rid of numbers
+            .replace(/[&\/\\#\^\,+`()$~%.'":|*?\[\]{}]/g, ' ') //remove all the special characters
+            .replace(/\s+/g, ' ').replace(/^\s\s*/, '').replace(/\s\s*$/, ''); // remove multispaces
         let wordCount = 0;
         if (docContent != "") {
             wordCount = docContent.split(" ").length;
         }
-
         return wordCount;
     }
 
