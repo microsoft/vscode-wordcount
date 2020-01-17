@@ -60,7 +60,7 @@ export class WordCounter {
             .replace(/\[x\]/g, ' ') //get rid of [x] checkboxes
             .replace(/[0-9]/g, ' ') // get rid of numbers
             .replace(/[&\/\\#\^\,+`()$~%.'":|*?\[\]{}]/g, ' ') //remove all the special characters
-            .replace(/\s+/g, ' ').replace(/^\s\s*/, '').replace(/\s\s*$/, ''); // remove multispaces
+            .replace(/\s+/g, ' '); // remove multispaces 
         let wordCount = 0;
         if (docContent != "") {
             wordCount = docContent.split(" ").length;
