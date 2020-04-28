@@ -55,7 +55,7 @@ export class WordCounter {
     }
 
     public _getWordCount(doc: TextDocument, sel?: Selection): number {
-		let docContent = sel === undefined ? doc.getText() : doc.getText(sel);
+	let docContent = sel === undefined ? doc.getText() : doc.getText(sel);
 
         // Parse out unwanted whitespace so the split is accurate
         docContent = docContent.replace(/(< ([^>]+)<)/g, '').replace(/\s+/g, ' ');
