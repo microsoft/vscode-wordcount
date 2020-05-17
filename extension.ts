@@ -29,7 +29,8 @@ export function activate(ctx: ExtensionContext) {
             ${mode}: | 
             Words: ${wordCounter._getWordCount(doc, sel)} | 
             Characters (without spaces): ${wordCounter._getCharCount(doc, sel)} | 
-            Sentences: ${wordCounter._getSentenceCount(doc, sel)}
+            Sentences: ${wordCounter._getSentenceCount(doc, sel)} | 
+            Paragraphs: ${wordCounter._getParagraphCount(doc, sel)}
         `);
     });
     
@@ -116,6 +117,22 @@ export class WordCounter {
         }
 
         return sentenceCount;
+    }
+
+    //this function counts the number of paragraphs across the document by defining a paragraph as characters split by 
+    // two or more new lines
+    public _getParagraphCount(doc: TextDocument, sel?: Selection): number {
+        let docContent = sel === undefined || sel.isEmpty ? doc.getText() : doc.getText(sel);
+        docContent += "\r\n\r\n"  /* Added so trailing newlines at the end of the document 
+                                    can be factored out regardless if the user inputted it or not. Otherwise, 
+                                    if the user leaves 2 trailing newlines, the program will split it and add both 
+                                    sides to the counter. */
+        let paragraphCount = 0;
+        if (docContent != "") {
+            paragraphCount = docContent.split(/[^\r\n][\r\n]{4}[\s\n\r]*/).length - 1;
+        }
+
+        return paragraphCount;
     }
 
     public dispose() {
