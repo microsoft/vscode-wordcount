@@ -27,6 +27,14 @@
 		"vscode": "0.10.x"
 	},
 	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "wordcount.viewSummary",
+				"title": "View Word Count Summary"
+			}
+		]
+	},
 	"scripts": {
 		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
 		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
