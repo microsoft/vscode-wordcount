@@ -1,9 +1,9 @@
 {
 	"name": "wordcount",
 	"displayName": "Word Count",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"publisher": "ms-vscode",
-	"description": "Markdown Word Count Example - a status bar contribution that reports out the number of words in a Markdown document as you interact with it.",
+	"description": "Markdown Word Count Example - a status bar contribution that reports out the number of words in a Markdown document as you interact with it. - with markdown support",
 	"author": {
 		"name": "seanmcbreen"
 	},
