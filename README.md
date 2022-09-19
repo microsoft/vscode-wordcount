@@ -1,15 +1,4 @@
-# VSCode - WordCount README
- 
-This is a simple extension that illustrates a number of concepts when it comes to writing extensions for VS Code.  
+# Changes made in my version
 
-* Activation on a file type open
-* Contributing to the status bar
-* Subscribing to update events
-* Adding a test to your extension
-* Marking up the `package.json` so the gallery looks good
-
-## Functionality
-
-It's pretty simple open up a `Markdown` file and the status bar will have an auto-updating wordcount in it...
-
-![Word Count in status bar](images/wordcount.gif)
+1. Activates for more than just Markdown files.
+2. Gives a page count (word count/250) in brackets next to the word count.
