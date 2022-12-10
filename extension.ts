@@ -41,7 +41,7 @@ export class WordCounter {
         let doc = editor.document;
 
         // Only update status if an MD file
-        if (doc.languageId === "markdown") {
+        if (doc.languageId === "markdown" || doc.languageId === "asciidoc" || doc.languageId === "plaintext") {
             let wordCount = this._getWordCount(doc);
 
             // Update the status bar

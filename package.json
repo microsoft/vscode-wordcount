@@ -17,7 +17,9 @@
 		"theme": "dark"
 	},
 	"activationEvents": [
-		"onLanguage:markdown"
+		"onLanguage:markdown",
+		"onLanguage:asciidoc",
+		"onLanguage:plaintext"
 	],
 	"repository": {
 		"type": "git",
