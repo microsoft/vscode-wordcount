@@ -25,11 +25,11 @@ export class WordCounter {
     private _statusBarItem: StatusBarItem;
 
     public updateWordCount() {
-        
+
         // Create as needed
         if (!this._statusBarItem) {
             this._statusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
-        } 
+        }
 
         // Get the current text editor
         let editor = window.activeTextEditor;
@@ -39,21 +39,23 @@ export class WordCounter {
         }
 
         let doc = editor.document;
+        let sel = editor.selection;
 
         // Only update status if an MD file
         if (doc.languageId === "markdown") {
             let wordCount = this._getWordCount(doc);
+            let selectedWordCount = this._getWordCount(doc, sel);
 
             // Update the status bar
-            this._statusBarItem.text = wordCount !== 1 ? `$(pencil) ${wordCount} Words` : '$(pencil) 1 Word';
+            this._statusBarItem.text = wordCount !== 1 ? `$(pencil) ${wordCount} Words | ${selectedWordCount} selected` : '$(pencil) 1 Word';
             this._statusBarItem.show();
         } else {
             this._statusBarItem.hide();
         }
     }
 
-    public _getWordCount(doc: TextDocument): number {
-        let docContent = doc.getText();
+    public _getWordCount(doc: TextDocument, sel?: Selection): number {
+	let docContent = sel === undefined ? doc.getText() : doc.getText(sel);
 
         // Parse out unwanted whitespace so the split is accurate
         docContent = docContent.replace(/(< ([^>]+)<)/g, '').replace(/\s+/g, ' ');
